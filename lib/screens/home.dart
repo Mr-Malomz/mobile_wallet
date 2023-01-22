@@ -75,11 +75,6 @@ class _HomeState extends State<Home> {
                           color: Colors.white),
                     ),
                     style: ButtonStyle(
-                        // shape: MaterialStateProperty.all(
-                        //   RoundedRectangleBorder(
-                        //     borderRadius: BorderRadius.circular(5.0),
-                        //   ),
-                        // ),
                         backgroundColor:
                             MaterialStateProperty.all(Colors.black),
                         side: MaterialStateProperty.all(

@@ -3,7 +3,8 @@ class AppConstant {
   final String projectId = "63cc281e38eaf93b874c";
   final String userCollectionId = "63cc2969d7ab518e0aa4";
   final String transactionCollectionId = "63cc35d65ed20419ab3b";
-  final String endpoint = "http://192.168.1.11/v1";
+  final String userId = "63cc2a4b3057681d502f";
+  final String endpoint = "http://192.168.1.166/v1";
 }
 
 class User {
@@ -14,7 +15,7 @@ class User {
   User({this.$id, required this.name, required this.balance});
 
   Map<dynamic, dynamic> toJson() {
-    return {"\$id": $id, "name": name, "balance": balance};
+    return {"name": name, "balance": balance};
   }
 
   factory User.fromJson(Map<dynamic, dynamic> json) {
@@ -40,7 +41,6 @@ class Transaction {
 
   Map<dynamic, dynamic> toJson() {
     return {
-      "\$id": $id,
       "userId": userId,
       "name": name,
       "paymentMethod": paymentMethod,

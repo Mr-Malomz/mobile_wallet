@@ -10,24 +10,24 @@ class Transactions extends StatefulWidget {
 }
 
 class _TransactionsState extends State<Transactions> {
-  late List<Transaction> transaction;
+  late List<Transaction> transactions;
   bool _isLoading = false;
   bool _isError = false;
 
   @override
   void initState() {
-    _getUserDetails();
+    _getTransactions();
     super.initState();
   }
 
-  _getUserDetails() {
+  _getTransactions() {
     setState(() {
       _isLoading = true;
     });
 
     WalletService().getTransactions().then((value) {
       setState(() {
-        transaction = value;
+        transactions = value;
         _isLoading = false;
       });
     }).catchError((e) {
@@ -61,7 +61,7 @@ class _TransactionsState extends State<Transactions> {
                   backgroundColor: Colors.black,
                 ),
                 body: ListView.builder(
-                  itemCount: transaction.length,
+                  itemCount: transactions.length,
                   itemBuilder: (context, index) {
                     return Container(
                       decoration: const BoxDecoration(
@@ -79,13 +79,13 @@ class _TransactionsState extends State<Transactions> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  transaction[index].name,
+                                  transactions[index].name,
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.w800),
                                 ),
                                 SizedBox(height: 10.0),
-                                Text(transaction[index].paymentMethod)
+                                Text(transactions[index].paymentMethod)
                               ],
                             ),
                           ),
@@ -93,7 +93,7 @@ class _TransactionsState extends State<Transactions> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               SizedBox(height: 10.0),
-                              Text('\$ ${transaction[index].amount}')
+                              Text('\$ ${transactions[index].amount}')
                             ],
                           ),
                         ],
